@@ -57,7 +57,7 @@ class Counter extends Component {
 
 export default Counter;
 
-11.React Component should return a single JSX element : 1. use Fragment OR <> multiple lines components </> ,,, 2.dont use (Code) and <div> code(ok but some timesand it is calculated as extra node at id="root") </div> 
+12.React Component should return a single JSX element : 1. use Fragment OR <> multiple lines components </> ,,, 2.dont use (Code) and <div> code(ok but some timesand it is calculated as extra node at id="root") </div> 
 -----------------------------------------------------
 import {Fragment} from 'react'
 
@@ -71,7 +71,7 @@ const Welcome = () => (
 export default Welcome
 
 
-12.Props are Read-only: name rahul passed as prop but we are changing the name prop it is not accepted here
+13.Props are Read-only: name rahul passed as prop but we are changing the name prop it is not accepted here
 File: src/App.js
 ----------------
 import Welcome from './components/Welcome'
