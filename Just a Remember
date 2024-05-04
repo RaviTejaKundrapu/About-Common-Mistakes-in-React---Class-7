@@ -1,0 +1,99 @@
+1.Missing Export Statement
+
+2.Missing Import Statement
+
+3.Missing Extending the React Component Class
+
+4.class vs className
+
+5.onclick vs onClick
+
+6.Event Listeners inside Class Component -  use Arrow functions inside Class Component - if you use declaration function and put this u will get UNDEFINED
+
+7.Passing Event Handler - [<button onClick={onIncrement}>Increase</button>] -  use onClick={this.onIncrement} at  Class Component
+
+8.Modifying the State Directly:
+----------------------------
+(Not Good Pratice Not Suggested):---
+onIncrement = () => {
+  this.state.count = this.state.count + 1;
+};
+
+use (like this only) using setState(): ok
+onIncrement = () => {
+  this.setState(prevState => ({
+    count: prevState.count + 1
+  }));
+};
+
+9.Calling setState() from render() - can be a infinite loop
+
+10.Invoking Event Handler - <button onClick={this.onIncrement()}>Increase</button> - dont use onClick={this.onIncrement()} - use only onClick={this.onIncrement} - while embeddeing you can use {this.onIncrement()}
+
+11.setState() is Asynchronous:
+-------------------------------
+Example : the state update and render in ui, but not in console on spot time
+
+import { Component } from 'react'
+
+import './index.css'
+
+class Counter extends Component {
+  state = {count: 0}
+  onIncrement = () => {
+    const {count} = this.state;
+    this.setState(prevState => ({
+      count: prevState.count + 1
+    }))
+    console.log(count)
+  }
+  render() {
+    return (
+      <p className="counter">Counter</p>
+      <button onClick={this.onIncrement}>Increase</button>
+    )
+  }
+}
+
+export default Counter;
+
+11.React Component should return a single JSX element : 1. use Fragment OR <> multiple lines components </> ,,, 2.dont use (Code) and <div> code(ok but some timesand it is calculated as extra node at id="root") </div> 
+-----------------------------------------------------
+import {Fragment} from 'react'
+
+const Welcome = () => (
+  <Fragment>
+    <h1>Hello, User</h1>
+    <p>You are learning React</p>
+  </Fragment>
+)
+
+export default Welcome
+
+
+12.Props are Read-only: name rahul passed as prop but we are changing the name prop it is not accepted here
+File: src/App.js
+----------------
+import Welcome from './components/Welcome'
+const App = () => <Welcome name="Rahul" />
+export default App
+
+File: src/components/Welcome/index.js
+---------------------------------------
+const Welcome = props => {
+  props.name = 'Ramu'
+  const {name} = props
+  return (
+    <>
+      <h1>Hello, {name}</h1>
+      <p>You are learning React</p>
+    </>
+  )
+}
+
+export default Welcome
+
+
+----------------------------------
+Majorly Talked About All Above Topics:
+----------------------------------
