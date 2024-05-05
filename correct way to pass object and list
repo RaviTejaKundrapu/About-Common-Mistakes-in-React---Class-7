@@ -39,4 +39,29 @@ onUpdateNumbers = () => {
   const updatedNumbers = [...numbers, 4]
   this.setState({numbers: updatedNumbers})
 }
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ---------------->> src/components/Student/index.js <<------------------------
+const Student = (props) => {
+  const { habits } = props;
+  const myHabit = habits.find((habit) => habit.includes("Cricket"));
+  
+  return <h1>{myHabit}</h1>;
+};
+
+export default Student;
+
+// ---------------------------->> src/App.js <<-----------------------------------
+import Student from "./components/Student";
+
+const studentData = {
+  name: "Avinash",
+  study: "10th Class",
+  habits: ["Watching Movies", "Reading Books", "Playing Cricket"]
+};
+
+const App = () => {
+  return <Student {...studentData} />;
+}
+
+export default App;
 
