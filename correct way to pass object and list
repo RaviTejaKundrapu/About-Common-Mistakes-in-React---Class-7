@@ -1,0 +1,42 @@
+Updating Object:
+----------------
+Mistake:
+state = {
+  person: {name: "Rahul", age: 30}
+}
+
+onUpdateAge = () => {
+  const {person} = this.state
+  person.age = 29
+}
+-----------------------------------------------------------
+Solution:
+state = {
+  person: {name: "Rahul", age: 30}
+}
+
+onUpdateAge = () => {
+  const {person} = this.state
+  const newPerson = {...person, age: 29}
+  this.setState({person: newPerson})
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Updating List:
+--------------
+Mistake:
+state = { numbers: [1, 2, 3] }
+
+onUpdateNumbers = () => {
+  const {numbers} = this.state
+  numbers.push(4)
+}
+
+Solution:
+state = {numbers: [1, 2, 3]}
+
+onUpdateNumbers = () => {
+  const {numbers} = this.state
+  const updatedNumbers = [...numbers, 4]
+  this.setState({numbers: updatedNumbers})
+}
+
